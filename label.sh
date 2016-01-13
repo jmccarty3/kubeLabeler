@@ -20,5 +20,5 @@ do
   echo $?
 done
 
-curl -v -X PATCH -d "$data" -H "Content-Type: application/merge-patch+json" http://$KUBEMASTER_URL/api/v1/nodes/$NODENAME
+curl -v -X PATCH -d "$data" -H "Content-Type: application/strategic-merge-patch+json" http://$KUBEMASTER_URL/api/v1/nodes/$NODENAME
 
