@@ -4,6 +4,8 @@ set -e
 [[ -v NODENAME ]] || (echo "Nodename not set" && exit 1)
 RAW_LABELS=$1
 
+echo "Passed Labels: $RAW_LABELS"
+
 LABELS=( ${RAW_LABELS//,/ } )
 data=$(curl -s http://$KUBEMASTER_URL/api/v1/nodes/$NODENAME | jq -r 'select(.metadata.labels)|.metadata.labels| {"metadata": { "labels" : .metadata.labels}}' )
 
