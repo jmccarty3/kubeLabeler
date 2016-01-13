@@ -8,7 +8,7 @@ LABELS=( ${RAW_LABELS//,/ } )
 data=$(curl -s http://$KUBEMASTER_URL/api/v1/nodes/$NODENAME | jq -r 'select(.metadata.labels)|.metadata.labels| {"metadata": { "labels" : .metadata.labels}}' )
 
 if [ -z "$data" ]; then
-  echo 'No labels returned for Node. Likely not found'
+  echo "No labels returned for Node:$NODENAME. Likely not found"
   exit 1
 fi
 
